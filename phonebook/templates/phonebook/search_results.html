@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}نتایج جستجو برای "{{ query }}"{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>نتایج جستجو برای "{{ query }}"</h2>
+
+    {% if contacts %}
+        <div class="row mt-4">
+            {% for contact in contacts %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">
+                        <h5>{{ contact.first_name }} {{ contact.last_name }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <i class="bi bi-phone"></i> {{ contact.mobile }}<br>
+                            {% if contact.phone %}
+                            <i class="bi bi-telephone"></i> {{ contact.phone }}<br>
+                            {% endif %}
+                            {% if contact.workplace %}
+                            <i class="bi bi-building"></i> {{ contact.workplace }}<br>
+                            {% endif %}
+                            {% if contact.position %}
+                            <i class="bi bi-person-badge"></i> {{ contact.position }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class="card-footer">
+                        <a href="{% url 'contact_update' contact.pk %}" class="btn btn-sm btn-warning">
+                            <i class="bi bi-pencil"></i> ویرایش
+                        </a>
+                        <a href="{% url 'contact_delete' contact.pk %}" class="btn btn-sm btn-danger">
+                            <i class="bi bi-trash"></i> حذف
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info mt-4">هیچ نتیجه‌ای برای جستجوی "{{ query }}" یافت نشد.</div>
+    {% endif %}
+</div>
+{% endblock %}
