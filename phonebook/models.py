@@ -4,6 +4,18 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
+class ContactGroup(models.Model):
+    name = models.CharField(max_length=100, verbose_name="نام گروه")
+    description = models.TextField(blank=True, verbose_name="توضیحات")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "گروه مخاطبین"
+        verbose_name_plural = "گروه‌های مخاطبین"
 class Contact(models.Model):
     first_name = models.CharField(max_length=50, verbose_name='نام')
     last_name = models.CharField(max_length=50, verbose_name='نام خانوادگی')

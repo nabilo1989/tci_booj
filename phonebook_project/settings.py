@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
+    # 'members.apps.MembersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -91,9 +92,11 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'members.CustomUser'
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
+# بخش اعتبارسنجی رمز عبور (یک نسخه)
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -108,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -128,18 +130,15 @@ USE_TZ = True
 # STATICFILES_DIRS = [BASE_DIR / '/static']
 # STATIC_ROOT = BASE_DIR / 'staticfiles'    # مسیر جمع‌آوری فایل‌های استاتیک
 
-# تنظیمات فایل‌های استاتیک
+
+# بخش فایل‌های استاتیک و مدیا
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # مسیر اصلی فایل‌های استاتیک
-    # os.path.join(BASE_DIR, 'members/static'),  # اگر فایل‌های استاتیک در اپ members هم وجود دارد
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # برای جمع‌آوری فایل‌های استاتیک
-
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # تنظیمات احراز هویت
 LOGIN_URL = '/members/login/'  # آدرس صفحه لاگین
@@ -155,7 +154,7 @@ CACHES = {
     }
 }
 # تنظیمات ایمیل (برای ارسال لینک بازیابی)
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.yourserver.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

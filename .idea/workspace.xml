@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fca95c6-1160-498d-8959-842f7b7444db" name="Changes" comment="run base 01">
-      <change afterPath="$PROJECT_DIR$/members/templates/members/403.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/members/templates/members/user_management.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phonebook/decorators.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin/base_site.html" afterDir="false" />
+    <list default="true" id="0fca95c6-1160-498d-8959-842f7b7444db" name="Changes" comment="run base 02">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/members/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/members/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/members/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/members/templates/members/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/members/templates/members/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/members/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/members/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phonebook/templates/phonebook/contact_confirm_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook/templates/phonebook/contact_confirm_delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phonebook/templates/phonebook/contact_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook/templates/phonebook/contact_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phonebook/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phonebook/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phonebook/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phonebook_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phonebook_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook_project/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,12 +40,12 @@
     &quot;assignee&quot;: &quot;nabilo1989&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/nabilo1989/tci_booj.git",
-    "accountId": "88a1f5c5-5b92-426b-aa0c-e076362aadb4"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/nabilo1989/tci_booj.git&quot;,
+    &quot;accountId&quot;: &quot;88a1f5c5-5b92-426b-aa0c-e076362aadb4&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -66,26 +57,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.phonebook_project.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/ARKA/Desktop/project/phonebook_project/static/images",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.phonebook_project.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ARKA/Desktop/project/phonebook_project/static/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ARKA\Desktop\project\phonebook_project\static\images" />
@@ -143,7 +134,8 @@
       <workItem from="1746465306172" duration="3216000" />
       <workItem from="1746468561237" duration="1984000" />
       <workItem from="1746625424488" duration="17077000" />
-      <workItem from="1746686646280" duration="6943000" />
+      <workItem from="1746686646280" duration="13620000" />
+      <workItem from="1746703270286" duration="824000" />
     </task>
     <task id="LOCAL-00001" summary="run base 01">
       <option name="closed" value="true" />
@@ -153,7 +145,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746634930738</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="run base 02">
+      <option name="closed" value="true" />
+      <created>1746693758845</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746693758845</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +161,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="run base 01" />
-    <option name="LAST_COMMIT_MESSAGE" value="run base 01" />
+    <MESSAGE value="run base 02" />
+    <option name="LAST_COMMIT_MESSAGE" value="run base 02" />
   </component>
 </project>
