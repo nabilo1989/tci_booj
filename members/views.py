@@ -71,3 +71,7 @@ def user_management(request):
 @login_required
 def permission_denied_view(request, exception=None):
     return render(request, './members/403.html', status=403)
+
+@login_required
+def profile_view(request):
+    return render(request, 'members/profile.html')
