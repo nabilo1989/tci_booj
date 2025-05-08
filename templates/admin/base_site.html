@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('سایت مدیریت') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="{% static 'images/logo.png' %}" alt="لوگو" height="40px">
+        {{ site_header|default:_('مدیریت دفترچه تلفن') }}
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}
+<!-- منوی سفارشی جهانی -->
+<div class="custom-admin-menu">
+    <a href="/" class="btn btn-outline-light">مشاهده سایت</a>
+    <a href="{% url 'user_management' %}" class="btn btn-outline-light">مدیریت کاربران</a>
+</div>
+{% endblock %}
+
+{% block extrahead %}
+<!-- استایل‌های سفارشی -->
+<style>
+    :root {
+        --primary: #4e73df;
+        --secondary: #858796;
+    }
+
+    #header {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: white;
+    }
+
+    .module h2, .module caption, .inline-group h2 {
+        background: var(--primary) !important;
+    }
+
+    .custom-admin-menu {
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+{% endblock %}

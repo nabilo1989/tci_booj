@@ -5,10 +5,12 @@ from . import views
 app_name = 'members'
 
 urlpatterns = [
-    # ... سایر URLها ...
+    path('admin/user-management/', views.user_management, name='user_management'),
+    path('admin/verify-user/<int:user_id>/', views.verify_user, name='verify_user'),
     path('signup/', views.signup, name='signup'),
-    path('login/', views.user_login, name='login'),
+    path('login/', views.login_view, name='login'),
     path('logout/', views.user_logout, name='logout'),
+    path('403/', views.permission_denied_view, name='permission_denied'),
     # URLهای بازیابی رمز عبور
     path('password_reset/',
          auth_views.PasswordResetView.as_view(

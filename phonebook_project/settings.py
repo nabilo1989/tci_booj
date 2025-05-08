@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'phonebook_project.urls'
@@ -59,7 +60,8 @@ ROOT_URLCONF = 'phonebook_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # این خط مهم است
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # این خط مهم است
+        # 'DIRS': [BASE_DIR / 'templates'],  # این خط مهم است
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,7 +91,9 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'members.CustomUser'
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -138,10 +142,10 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # تنظیمات احراز هویت
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+LOGIN_URL = '/members/login/'  # آدرس صفحه لاگین
+LOGIN_REDIRECT_URL = 'contact_list'  # صفحه پیش‌فرض پس از لاگین
+LOGOUT_REDIRECT_URL = 'home'  # صفحه پس از خروج
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CACHES = {
@@ -158,3 +162,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your@email.com'
 EMAIL_HOST_PASSWORD = 'yourpassword'
 DEFAULT_FROM_EMAIL = 'your@email.com'
+# تنظیمات پایانی فایل
+HANDLER403 = 'yourapp.views.permission_denied_view'

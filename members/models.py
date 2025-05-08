@@ -4,7 +4,13 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     is_admin = models.BooleanField(default=False)
+    is_verified = models.BooleanField(default=False)
+    verified_by = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True)
 
+    class Meta:
+        permissions = [
+            ("can_manage_contacts", "Can create, update and delete contacts"),
+        ]
     # رفع مشکل تداخل related_name
     groups = models.ManyToManyField(
         'auth.Group',

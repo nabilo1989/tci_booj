@@ -1,0 +1,29 @@
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+<h1>مدیریت کاربران</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>نام کاربری</th>
+            <th>ایمیل</th>
+            <th>تاریخ ثبت‌نام</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in unverified_users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.date_joined }}</td>
+            <td>
+                <a href="{% url 'verify_user' user.id %}" class="btn btn-success">
+                    تایید کاربر
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -5,6 +5,11 @@
 {% block title %}{% if form.instance.pk %}ویرایش{% else %}افزودن{% endif %} مخاطب{% endblock %}
 
 {% block content %}
+      {% if not request.user.is_verified %}
+        <div class="alert alert-warning">
+             برای ایجاد ،ویرایش یا حذف مخاطب  باید توسط مدیر سیستم تایید شوید.
+        </div>
+    {% endif %}
 <div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-lg-8">
