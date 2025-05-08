@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags i18n %}
+
+{% block title %}{% trans "Register" %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-person-plus"></i> {% trans "Create New Account" %}
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-person-check"></i> {% trans "Register" %}
+                        </button>
+                        <a href="{% url 'members:login' %}" class="btn btn-outline-secondary">
+                            <i class="bi bi-box-arrow-in-right"></i> {% trans "Already have an account? Login" %}
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

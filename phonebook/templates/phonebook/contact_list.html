@@ -1,0 +1,144 @@
+<!-- templates/phonebook/contact_list.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}لیست مخاطبین{% endblock %}
+
+{% block extra_css %}
+<style>
+    .contact-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+        border-radius: 12px;
+        overflow: hidden;
+        border: none;
+        margin-bottom: 1.5rem;
+    }
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .contact-avatar {
+        width: 80px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: #1a1d20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        font-weight: bold;
+        margin: 5px auto 1rem;
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .search-box {
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid #dee2e6;
+        transition: all 0.3s;
+    }
+    .search-box:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 0 0.25rem rgba(106, 17, 203, 0.25);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">
+            <i class="bi bi-people-fill text-primary"></i> لیست مخاطبین
+        </h1>
+        {% if user.is_authenticated %}
+        <a href="{% url 'contact_create' %}" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> افزودن مخاطب
+        </a>
+        {% endif %}
+    </div>
+
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+            <form method="get" action="{% url 'contact_list' %}">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control search-box"
+                           placeholder="جستجو در مخاطبین..."
+                           value="{{ request.GET.q }}"
+                           aria-label="جستجو">
+                    <button class="btn btn-outline-primary" type="submit">
+                        <i class="bi bi-search"></i> جستجو
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if contacts %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for contact in contacts %}
+        <div class="col">
+            <div class="contact-card card h-100">
+                <div class="card-header bg-primary bg-opacity-10 border-0">
+                    <div class="contact-avatar">
+                        <!-- {{ contact.position }}  -->
+                        <!-- {{ contact.first_name|first }}{{ contact.last_name|first }}-->
+                        {{ contact.first_name }}
+                    </div>
+                </div>
+                <div class="card-body pt-0 text-center">
+                    <h3 class="h5">{{ contact.first_name }} {{ contact.last_name }}</h3>
+                    {% if contact.position %}
+                    <p class="text-muted mb-3">{{ contact.position }}</p>
+                    {% endif %}
+
+                    <ul class="list-unstyled">
+                         <li class="mb-2">
+                            <i class="bi bi-phone-vibrate text-primary"></i> <!-- موبایل با افکت ویبره -->
+                            {{ contact.mobile }}
+                         </li>
+                    {% if contact.phone %}
+                    <li class="mb-2">
+                        <i class="bi bi-telephone-outbound text-primary"></i> <!-- تلفن ثابت -->
+                       {{ contact.phone }}
+                    </li>
+
+                        {% endif %}
+                        {% if contact.workplace %}
+                        <li class="mb-2">
+                            <i class="bi bi-building text-primary"></i>
+                            {{ contact.workplace }}
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="card-footer bg-transparent border-0 d-flex justify-content-center">
+                    <a href="{% url 'contact_update' contact.pk %}" class="btn btn-sm btn-outline-primary mx-1">
+                        <i class="bi bi-pencil"></i> ویرایش
+                    </a>
+                    <a href="{% url 'contact_delete' contact.pk %}" class="btn btn-sm btn-outline-danger mx-1">
+                        <i class="bi bi-trash"></i> حذف
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="card border-0 shadow-sm">
+        <div class="card-body text-center py-5">
+            <i class="bi bi-people text-muted" style="font-size: 3rem;"></i>
+            <h3 class="h5 mt-3">مخاطبی یافت نشد</h3>
+            <p class="text-muted">می‌توانید اولین مخاطب را اضافه کنید</p>
+            {% if user.is_authenticated %}
+            <a href="{% url 'contact_create' %}" class="btn btn-primary mt-2">
+                <i class="bi bi-plus-lg"></i> افزودن مخاطب
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
