@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0fca95c6-1160-498d-8959-842f7b7444db" name="Changes" comment="run base 004">
+    <list default="true" id="0fca95c6-1160-498d-8959-842f7b7444db" name="Changes" comment="run base 005&#10;end step1">
+      <change afterPath="$PROJECT_DIR$/members/templates/members/edit_profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/members/templates/members/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/members/templates/members/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/members/templates/members/password_reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/members/templates/members/password_reset_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/members/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/members/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/members/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/members/templates/members/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/members/templates/members/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/members/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phonebook_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/members/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phonebook_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/phonebook_project/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +52,7 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2wgZiTTz9C0TNDz86VrHfuDMMAy" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -71,7 +75,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -116,8 +120,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.26053.29" />
-        <option value="bundled-python-sdk-b1dbf8ef85a6-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.26053.29" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.122" />
+        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
       </set>
     </attachedChunks>
   </component>
@@ -133,7 +137,9 @@
       <workItem from="1746468561237" duration="1984000" />
       <workItem from="1746625424488" duration="17077000" />
       <workItem from="1746686646280" duration="13620000" />
-      <workItem from="1746703270286" duration="8362000" />
+      <workItem from="1746703270286" duration="12076000" />
+      <workItem from="1746775162161" duration="1755000" />
+      <workItem from="1746777034651" duration="550000" />
     </task>
     <task id="LOCAL-00001" summary="run base 01">
       <option name="closed" value="true" />
@@ -167,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746716685672</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="run base 005&#10;end step1">
+      <option name="closed" value="true" />
+      <created>1746720819267</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746720819267</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,6 +192,7 @@
     <MESSAGE value="run base 02" />
     <MESSAGE value="run base 003" />
     <MESSAGE value="run base 004" />
-    <option name="LAST_COMMIT_MESSAGE" value="run base 004" />
+    <MESSAGE value="run base 005&#10;end step1" />
+    <option name="LAST_COMMIT_MESSAGE" value="run base 005&#10;end step1" />
   </component>
 </project>

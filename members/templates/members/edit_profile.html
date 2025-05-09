@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}ویرایش پروفایل - {{ user.get_full_name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-person-gear"></i> ویرایش پروفایل کاربری
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="row mb-4">
+                            <div class="col-md-4 text-center">
+                                {% if user.profile.avatar %}
+                                    <img src="{{ user.profile.avatar.url }}"
+                                         class="img-thumbnail mb-3"
+                                         id="avatar-preview"
+                                         style="width: 150px; height: 150px; object-fit: cover;">
+                                {% else %}
+                                    <img src="{% static 'images/default-avatar.png' %}"
+                                         class="img-thumbnail mb-3"
+                                         id="avatar-preview"
+                                         style="width: 150px; height: 150px; object-fit: cover;">
+                                {% endif %}
+                                <div class="form-group">
+                                    {{ profile_form.avatar|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h5>اطلاعات پایه</h5>
+                                <hr>
+                                {{ user_form|crispy }}
+                            </div>
+                        </div>
+
+                        <h5>اطلاعات تکمیلی</h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ profile_form.phone|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ profile_form.national_id|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                {{ profile_form.gender|as_crispy_field }}
+                            </div>
+                            <div class="col-md-6">
+                                {{ profile_form.birth_date|as_crispy_field }}
+                            </div>
+                        </div>
+                        {{ profile_form.address|as_crispy_field }}
+                        {{ profile_form.bio|as_crispy_field }}
+                        {{ profile_form.website|as_crispy_field }}
+
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> ذخیره تغییرات
+                            </button>
+                            <a href="{% url 'members:profile' %}" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle"></i> انصراف
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// نمایش پیش‌نمایش آواتار قبل از آپلود
+document.getElementById('id_avatar').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('avatar-preview').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+{% endblock %}

@@ -1,10 +1,12 @@
-from django.contrib.auth.decorators import login_required, user_passes_test
-from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import  user_passes_test
 from django.contrib.auth import login, logout, authenticate
-from django.contrib import messages
 from .forms import CustomUserCreationForm, LoginForm
 from .models import CustomUser
-
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .forms import UserUpdateForm, ProfileUpdateForm
+from django.contrib import messages
+from .forms import ProfileForm,CustomUser,Profile
 
 def signup(request):
     if request.method == 'POST':
@@ -72,6 +74,63 @@ def user_management(request):
 def permission_denied_view(request, exception=None):
     return render(request, './members/403.html', status=403)
 
+# @login_required
+# def profile_view(request):
+#     return render(request, 'members/profile.html')
+
+
+
 @login_required
 def profile_view(request):
-    return render(request, 'members/profile.html')
+    user = request.user
+    context = {
+        'user': user,
+        'profile': user.profile  # اگر مدل Profile دارید
+    }
+    return render(request, 'members/profile.html', context)
+
+
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(
+            request.POST,
+            request.FILES,
+            instance=request.user.profile
+        )
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'پروفایل شما با موفقیت به‌روزرسانی شد!')
+            return redirect('members:profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+    }
+
+    return render(request, 'members/profile.html', context)
+
+
+
+
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'پروفایل با موفقیت به‌روزرسانی شد')
+            return redirect('members:profile')
+    else:
+        form = ProfileForm(instance=request.user.profile)
+
+    return render(request, 'members/edit_profile.html', {'form': form})

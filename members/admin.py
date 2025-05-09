@@ -35,6 +35,26 @@
 # custom_admin_site = CustomAdminSite(name='custom_admin')
 
 from django.contrib import admin
-from .models import CustomUser
+from django.contrib.auth.admin import UserAdmin
+from .models import CustomUser, Profile, Contact, ContactGroup
 
-admin.site.register(CustomUser)
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    can_delete = False
+    verbose_name_plural = 'پروفایل'
+    fk_name = 'user'
+
+class CustomUserAdmin(UserAdmin):
+    inlines = (ProfileInline,)
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_admin', 'is_verified')
+    list_select_related = ('profile',)
+
+    def get_inline_instances(self, request, obj=None):
+        if not obj:
+            return list()
+        return super().get_inline_instances(request, obj)
+
+admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Profile)
+admin.site.register(Contact)
+admin.site.register(ContactGroup)

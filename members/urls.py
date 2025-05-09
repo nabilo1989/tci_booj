@@ -12,6 +12,7 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('403/', views.permission_denied_view, name='permission_denied'),
     path('profile/', views.profile_view, name='profile'),
+    path('profile/', views.profile, name='profile'),
 
     # # URL‌های بازیابی رمز عبور
     # path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),

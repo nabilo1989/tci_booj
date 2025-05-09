@@ -1,35 +1,126 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags i18n %}
+{#{% extends 'base.html' %}#}
+{#{% load crispy_forms_tags i18n %}#}
+{##}
+{#{% block title %}{% trans "Register" %}{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    <div class="d-flex justify-content-between mb-4">#}
+{#    <a href="{% url 'accounts:change_password' %}" class="btn btn-outline-warning">#}
+{#        <i class="bi bi-key"></i> {% trans "Change Password" %}#}
+{#    </a>#}
+{#    </div>#}
+{#<div class="row justify-content-center">#}
+{#    <div class="col-md-8 col-lg-6">#}
+{#        <div class="card shadow">#}
+{#            <div class="card-header bg-primary text-white">#}
+{#                <h4 class="mb-0">#}
+{#                    <i class="bi bi-person-plus"></i> {% trans "Create New Account" %}#}
+{#                </h4>#}
+{#            </div>#}
+{#            <div class="card-body">#}
+{#                <form method="post" enctype="multipart/form-data" novalidate>#}
+{#                    {% csrf_token %}#}
+{#                    {{ form|crispy }}#}
+{#                    <div class="d-grid gap-2 mt-4">#}
+{#                        <button type="submit" class="btn btn-primary">#}
+{#                            <i class="bi bi-person-check"></i> {% trans "Register" %}#}
+{#                        </button>#}
+{#                        <a href="{% url 'members:login' %}" class="btn btn-outline-secondary">#}
+{#                            <i class="bi bi-box-arrow-in-right"></i> {% trans "Already have an account? Login" %}#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#{% endblock %}#}
 
-{% block title %}{% trans "Register" %}{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}پروفایل کاربری - {{ user.get_full_name }}{% endblock %}
 
 {% block content %}
-    <div class="d-flex justify-content-between mb-4">
-    <a href="{% url 'accounts:change_password' %}" class="btn btn-outline-warning">
-        <i class="bi bi-key"></i> {% trans "Change Password" %}
-    </a>
-    </div>
-<div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-        <div class="card shadow">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">
-                    <i class="bi bi-person-plus"></i> {% trans "Create New Account" %}
-                </h4>
-            </div>
-            <div class="card-body">
-                <form method="post" enctype="multipart/form-data" novalidate>
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="bi bi-person-check"></i> {% trans "Register" %}
-                        </button>
-                        <a href="{% url 'members:login' %}" class="btn btn-outline-secondary">
-                            <i class="bi bi-box-arrow-in-right"></i> {% trans "Already have an account? Login" %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card mb-4 shadow">
+                <div class="card-body text-center">
+                    {% if user.profile.avatar %}
+                        <img src="{{ user.profile.avatar.url }}" alt="تصویر پروفایل"
+                             class="rounded-circle img-fluid" style="width: 150px;">
+                    {% else %}
+                        <img src="{% static 'images/default-avatar.png' %}" alt="تصویر پیش‌فرض"
+                             class="rounded-circle img-fluid" style="width: 150px;">
+                    {% endif %}
+                    <h5 class="my-3">{{ user.get_full_name }}</h5>
+                    <p class="text-muted mb-1">{{ user.profile.bio|default:"..." }}</p>
+                    <div class="d-flex justify-content-center mb-2">
+                        <a href="{% url 'members:edit_profile' %}" class="btn btn-primary">
+                            ویرایش پروفایل
                         </a>
                     </div>
-                </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card mb-4 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">اطلاعات شخصی</h5>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">نام کامل</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">{{ user.get_full_name }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">ایمیل</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">{{ user.email }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">تلفن همراه</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">{{ user.profile.phone|default:"ثبت نشده" }}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">تاریخ تولد</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">
+                                {% if user.profile.birth_date %}
+                                    {{ user.profile.birth_date|date:"Y/m/d" }}
+                                    ({{ user.profile.get_age }} سال)
+                                {% else %}
+                                    ثبت نشده
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">آدرس</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">{{ user.profile.address|default:"ثبت نشده" }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
